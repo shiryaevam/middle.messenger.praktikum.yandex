@@ -1,0 +1,16 @@
+*.test.js
+*.spec.js
+jest/**/*
+*.woff
+*.eot
+*.ttf
+**/*.spec.js
+**/*.test.js
+/*.js
+*.css
+*.scss
+*.svg
+*.png
+*.log
+*.lock
+

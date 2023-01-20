@@ -1,0 +1,186 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+			"modules": true
+		}
+	},
+	"env": {
+		"browser": true,
+		"es2020": true
+	},
+	"extends": [
+		"airbnb-base",
+		"plugin:prettier/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"rules": {
+		"prettier/prettier": "error",
+		"space-before-function-paren": ["error", { "anonymous": "ignore", "named": "always" }],
+		"func-names": ["error", "never"],
+		"react/prop-types": 0,
+		"arrow-parens": "off",
+		"linebreak-style": "off",
+		"max-len": [
+			"error",
+			{
+				"code": 120,
+				"ignoreTemplateLiterals": true,
+				"ignoreStrings": true,
+				"ignoreComments": true,
+				"ignoreTrailingComments": true
+			}
+		],
+		"no-nested-ternary": "off",
+		"prefer-promise-reject-errors": "off",
+		"spaced-comment": "off",
+		"react/jsx-filename-extension": [
+			1,
+			{ "extensions": [".tsx", ".jsx", ".js"] }
+		],
+		"import/extensions": 0,
+		"radix": "off",
+		"import/no-extraneous-dependencies": "off",
+		"import/prefer-default-export": "off",
+		"no-restricted-imports": "off",
+		"react/display-name": "off",
+		"local-rules/end-api-functions-with-api": 2,
+		"react/destructuring-assignment": "error",
+		"react/jsx-curly-brace-presence": "error",
+		"import/no-unresolved": "error",
+		"prefer-template": "error",
+		"import/order": [
+			"error",
+			{
+				"groups": ["builtin", "external", "internal"],
+				"pathGroups": [
+					{
+						"pattern": "react",
+						"group": "external",
+						"position": "before"
+					}
+				],
+				"pathGroupsExcludedImportTypes": ["react"],
+				"newlines-between": "always",
+				"alphabetize": {
+					"order": "asc",
+					"caseInsensitive": true
+				}
+			}
+		],
+		"react/self-closing-comp": [
+			"error",
+			{
+				"component": true,
+				"html": true
+			}
+		],
+		"react/jsx-max-props-per-line": [2, { "maximum": 3, "when": "multiline" }],
+		"newline-before-return": "error",
+
+		"indent": "off",
+		"implicit-arrow-linebreak": "off",
+		"object-curly-newline": "off",
+		"operator-linebreak": "off",
+		"no-confusing-arrow": "off",
+		"function-paren-newline": "off",
+		"no-tabs": "off",
+		"no-mixed-spaces-and-tabs": "off",
+		"padded-blocks": "off",
+		"no-trailing-spaces": "off",
+		"no-multiple-empty-lines": "off",
+		"no-extra-semi": "off",
+		"nonblock-statement-body-position": "off",
+		"semi-style": "off",
+		"object-curly-spacing": "off",
+
+		"semi": ["warn", "never"],
+		"quotes": [
+			"warn",
+			"single",
+			{ "avoidEscape": true, "allowTemplateLiterals": true }
+		],
+		"jsx-quotes": ["warn", "prefer-double"],
+		"comma-spacing": "off",
+
+		"react-hooks/exhaustive-deps": [
+			"error",
+			{
+				"additionalHooks": "(useRenderEffect|useRenderEffectDeep)"
+			}
+		],
+		"no-param-reassign": "off",
+		"consistent-return": "off",
+		"no-shadow": "error",
+		"func-call-spacing": "off",
+		"no-spaced-func": "off"
+	},
+	"globals": {
+		"google": true,
+		"$": true,
+		"__COMPANY_ID_FOR_HEADERS": true
+	},
+	"plugins": ["@typescript-eslint", "prettier"],
+	"settings": {
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts", ".tsx"]
+		},
+		"react": {
+			"createClass": "createReactClass",
+			"pragma": "React",
+			"version": "detect"
+		},
+		"import/extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs"],
+		"propWrapperFunctions": [
+			"forbidExtraProps",
+			{ "property": "freeze", "object": "Object" },
+			{ "property": "myFavoriteWrapper" }
+		],
+		"linkComponents": ["Hyperlink", { "name": "Link", "linkAttribute": "to" }],
+		"import/resolver": {
+			"node": {
+				"extensions": [".ts", ".tsx", ".jsx", ".js"]
+			},
+			"typescript": {
+				"alwaysTryTypes": true
+			}
+		}
+	},
+	"overrides": [
+		{
+			"files": ["**/*.ts", "**/*.tsx"],
+			"env": { "browser": true, "es2020": true, "node": true },
+			"extends": [
+				"eslint:recommended",
+				"plugin:react/recommended",
+				"plugin:@typescript-eslint/eslint-recommended",
+				"plugin:@typescript-eslint/recommended"
+			],
+			"rules": {
+				"@typescript-eslint/no-explicit-any": "off",
+				"@typescript-eslint/no-non-null-assertion": "off",
+				"react/prop-types": 0,
+				"no-return-await": "off",
+				"@typescript-eslint/explicit-module-boundary-types": "off",
+
+				"no-mixed-spaces-and-tabs": "off",
+				"@typescript-eslint/no-extra-semi": "off",
+				"no-shadow": "off",
+				"@typescript-eslint/no-shadow": "warn",
+				"no-use-before-define": "off",
+				"@typescript-eslint/no-use-before-define": ["error"]
+			},
+			"parser": "@typescript-eslint/parser",
+			"parserOptions": {
+				"ecmaFeatures": { "jsx": true },
+				"ecmaVersion": "latest",
+				"sourceType": "module"
+			},
+			"plugins": ["react", "@typescript-eslint"]
+		}
+	]
+}
