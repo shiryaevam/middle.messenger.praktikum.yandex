@@ -14,3 +14,4 @@ jest/**/*
 *.log
 *.lock
 /dist/*
+/build/*

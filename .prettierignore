@@ -27,3 +27,4 @@
 *.config
 *.*xml
 *.json.example
+/build/*
