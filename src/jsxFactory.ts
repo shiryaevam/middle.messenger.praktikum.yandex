@@ -18,13 +18,13 @@ const appendChild = (parent: HTMLElement, child: string | HTMLElement) => {
 		parent.appendChild(child)
 	}
 }
-export const AttributeMapper = (val: string) =>
+const AttributeMapper = (val: string) =>
 	({
 		tabIndex: 'tabindex',
 		className: 'class',
 		readOnly: 'readonly',
 	}[val] || val)
-export const escapeHtml = (str: object[] | string) =>
+const escapeHtml = (str: object[] | string) =>
 	String(str).replace(/[&<>"'\/\\]/g, (s) => `&${entityMap[s]};`)
 export const DOMcreateElement = (
 	tag: Function | string,
@@ -36,6 +36,7 @@ export const DOMcreateElement = (
 	const element = document.createElement(tag)
 
 	Object.entries(props || {}).forEach(([name, val]) => {
+		name = escapeHtml(AttributeMapper(name))
 		if (name.startsWith('on') && name.toLowerCase() in window) {
 			element.addEventListener(name.toLowerCase().substr(2), val)
 		} else if (name === 'ref') {

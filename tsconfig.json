@@ -22,7 +22,11 @@
 		"jsx": "preserve",
 		"jsxFactory": "DOMcreateElement",
 		"jsxFragmentFactory": "DOMcreateFragment",
-		"allowJs": true
+		"allowJs": true,
+		"plugins": [{
+			"typesCss" : "typescript-plugin-css-modules"
+		}]
 	},
-	"include": ["./src"]
+	"include": ["./src"],
+	"exclude": ["./dist"]
 }

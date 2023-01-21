@@ -13,4 +13,4 @@ jest/**/*
 *.png
 *.log
 *.lock
-
+/dist/*

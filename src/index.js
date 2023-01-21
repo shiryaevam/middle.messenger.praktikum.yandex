@@ -2,10 +2,11 @@
 /*** @jsxFrag DOMcreateFragment */
 
 import { DOMcreateElement, DOMcreateFragment } from './jsxFactory'
+import styles from './index.module.scss'
 
 
 const App = () => (
-	<div>
+	<div  className={styles.root}>
 		<p>Start Project</p>
 	</div>
 )
