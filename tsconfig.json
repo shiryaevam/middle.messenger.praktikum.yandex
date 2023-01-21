@@ -1,7 +1,6 @@
 {
 	"compilerOptions": {
 		"rootDir": "src",
-		"outDir": "lib",
 		"target": "ESNext",
 		"useDefineForClassFields": true,
 		"module": "ESNext",
@@ -16,17 +15,21 @@
 		"noUnusedParameters": true,
 		"noImplicitReturns": true,
 		"declaration": true,
-		"declarationDir": "./src",
+		"declarationDir": "./src/types",
 		"declarationMap": true,
 		"baseUrl": "./",
 		"jsx": "preserve",
 		"jsxFactory": "DOMcreateElement",
 		"jsxFragmentFactory": "DOMcreateFragment",
 		"allowJs": true,
-		"plugins": [{
-			"typesCss" : "typescript-plugin-css-modules"
-		}]
+		"plugins": [
+			{
+				"typesCss": "typescript-plugin-css-modules"
+			},
+		],
+		"outDir": "bundle",
+		"typeRoots": ["./src/types"],
 	},
-	"include": ["./src"],
-	"exclude": ["./dist", "./build"]
+	"include": ["src"],
+	"exclude": ["dist", "build", "bundle"]
 }

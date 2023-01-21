@@ -4,3 +4,5 @@ declare namespace JSX {
         [eleName: string]: any;
     }
 }
+
+declare module '*.module.scss'
