@@ -5,6 +5,9 @@ import Routes from './Routes'
 import ErrorPages from '../ErrorPages/ErrorPages'
 import Login from '../Login/Login'
 import '../index.scss'
+import Registary from '../Registary/Registary'
+import Profile from '../Profile/Profile'
+import ChangePassword from '../ChangePassword/ChangePassword'
 
 const AppRoutes = () => {
 	const { ROOT, LOGIN, REGISTRATION, ERROR_SERVER, PROFILE, CHATS } = Routes
@@ -37,26 +40,19 @@ const AppRoutes = () => {
 			)
 		case LOGIN:
 			return <Login />
+
 		case REGISTRATION:
-			return (
-				<div>
-					<p>REGISTRATION</p>
-				</div>
-			)
+			return <Registary />
+
 		case ERROR_SERVER:
 			return <ErrorPages code="500" text="Мы уже фиксим" />
+
 		case PROFILE.PROFILE:
-			return (
-				<div>
-					<p>PROFILE</p>
-				</div>
-			)
+			return <Profile />
+
 		case PROFILE.CHANGE_PASSWORD:
-			return (
-				<div>
-					<p>CHANGE_PASSWORD</p>
-				</div>
-			)
+			return <ChangePassword />
+
 		case CHATS:
 			return <ErrorPages text="Будет позже" />
 

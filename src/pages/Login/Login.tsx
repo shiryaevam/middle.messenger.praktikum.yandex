@@ -2,6 +2,7 @@
 /** @jsxFrag DOMcreateFragment */
 import { DOMcreateElement } from 'jsxFactory'
 import styles from './Login.module.scss'
+import Routes from '../AppRoutes/Routes'
 const Login = () => {
 	return (
 		<div className="wrapperPage">
@@ -13,7 +14,7 @@ const Login = () => {
 				</div>
 				<div>
 					<input type="submit">Войти</input>
-					<p>Нет Аккаунта?</p>
+					<a href={Routes.REGISTRATION}>Нет Аккаунта?</a>
 				</div>
 			</form>
 		</div>
