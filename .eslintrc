@@ -20,7 +20,10 @@
 	"rules": {
 		"import/prefer-default-export": "off",
 		"prettier/prettier": "error",
-		"space-before-function-paren": ["error", { "anonymous": "ignore", "named": "always" }],
+		"space-before-function-paren": [
+			"error",
+			{ "anonymous": "ignore", "named": "always" }
+		],
 		"func-names": ["error", "never"],
 		"react/prop-types": 0,
 		"arrow-parens": "off",
@@ -103,6 +106,7 @@
 				"plugin:@typescript-eslint/recommended"
 			],
 			"rules": {
+				"@typescript-eslint/no-var-requires": "off",
 				"@typescript-eslint/no-explicit-any": "off",
 				"@typescript-eslint/no-non-null-assertion": "off",
 				"react/prop-types": 0,

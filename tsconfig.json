@@ -28,7 +28,8 @@
 			},
 		],
 		"outDir": "bundle",
-		"typeRoots": ["./src/types"],
+		"types": [ "node" ],
+		"typeRoots": [ "../node_modules/@types" ],
 		"paths": {
 			"jsxFactory": ["./src/utils/jsxFactory/jsxFactory.ts"],
 		},
