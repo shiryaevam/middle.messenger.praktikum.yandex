@@ -13,12 +13,12 @@
 		"es2020": true
 	},
 	"extends": [
-		"airbnb-base",
 		"plugin:prettier/recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended"
 	],
 	"rules": {
+		"import/prefer-default-export": "off",
 		"prettier/prettier": "error",
 		"space-before-function-paren": ["error", { "anonymous": "ignore", "named": "always" }],
 		"func-names": ["error", "never"],
@@ -38,47 +38,10 @@
 		"no-nested-ternary": "off",
 		"prefer-promise-reject-errors": "off",
 		"spaced-comment": "off",
-		"react/jsx-filename-extension": [
-			1,
-			{ "extensions": [".tsx", ".jsx", ".js"] }
-		],
-		"import/extensions": 0,
 		"radix": "off",
-		"import/no-extraneous-dependencies": "off",
-		"import/prefer-default-export": "off",
 		"no-restricted-imports": "off",
 		"react/display-name": "off",
-		"local-rules/end-api-functions-with-api": 2,
-		"react/destructuring-assignment": "error",
-		"react/jsx-curly-brace-presence": "error",
-		"import/no-unresolved": "error",
 		"prefer-template": "error",
-		"import/order": [
-			"error",
-			{
-				"groups": ["builtin", "external", "internal"],
-				"pathGroups": [
-					{
-						"pattern": "react",
-						"group": "external",
-						"position": "before"
-					}
-				],
-				"pathGroupsExcludedImportTypes": ["react"],
-				"newlines-between": "always",
-				"alphabetize": {
-					"order": "asc",
-					"caseInsensitive": true
-				}
-			}
-		],
-		"react/self-closing-comp": [
-			"error",
-			{
-				"component": true,
-				"html": true
-			}
-		],
 		"react/jsx-max-props-per-line": [2, { "maximum": 3, "when": "multiline" }],
 		"newline-before-return": "error",
 
@@ -106,13 +69,6 @@
 		],
 		"jsx-quotes": ["warn", "prefer-double"],
 		"comma-spacing": "off",
-
-		"react-hooks/exhaustive-deps": [
-			"error",
-			{
-				"additionalHooks": "(useRenderEffect|useRenderEffectDeep)"
-			}
-		],
 		"no-param-reassign": "off",
 		"consistent-return": "off",
 		"no-shadow": "error",
@@ -129,34 +85,20 @@
 		"import/parsers": {
 			"@typescript-eslint/parser": [".ts", ".tsx"]
 		},
-		"react": {
-			"createClass": "createReactClass",
-			"pragma": "React",
-			"version": "detect"
-		},
 		"import/extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs"],
 		"propWrapperFunctions": [
 			"forbidExtraProps",
 			{ "property": "freeze", "object": "Object" },
 			{ "property": "myFavoriteWrapper" }
 		],
-		"linkComponents": ["Hyperlink", { "name": "Link", "linkAttribute": "to" }],
-		"import/resolver": {
-			"node": {
-				"extensions": [".ts", ".tsx", ".jsx", ".js"]
-			},
-			"typescript": {
-				"alwaysTryTypes": true
-			}
-		}
+		"linkComponents": ["Hyperlink", { "name": "Link", "linkAttribute": "to" }]
 	},
 	"overrides": [
 		{
 			"files": ["**/*.ts", "**/*.tsx"],
 			"env": { "browser": true, "es2020": true, "node": true },
 			"extends": [
-				"eslint:recommended",
-				"plugin:react/recommended",
+				"plugin:prettier/recommended",
 				"plugin:@typescript-eslint/eslint-recommended",
 				"plugin:@typescript-eslint/recommended"
 			],
@@ -180,7 +122,7 @@
 				"ecmaVersion": "latest",
 				"sourceType": "module"
 			},
-			"plugins": ["react", "@typescript-eslint"]
+			"plugins": ["@typescript-eslint"]
 		}
 	]
 }

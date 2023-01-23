@@ -1,13 +1,16 @@
 /** @jsx DOMcreateElement */
 
-import { DOMcreateElement } from './utils/jsxFactory/jsxFactory'
-import { root } from './index.module.scss'
+import { DOMcreateElement } from 'jsxFactory'
+import './index.scss'
+
+import AppRoutes from './pages/AppRoutes/AppRoutes'
 
 const App = () => (
-	<div className={root}>
-		<p>Start Project</p>
+	<div className="root">
+		<AppRoutes />
 	</div>
 )
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-document.getElementById('root')?.appendChild(<App />)
+document.body.appendChild(<App />)

@@ -29,6 +29,9 @@
 		],
 		"outDir": "bundle",
 		"typeRoots": ["./src/types"],
+		"paths": {
+			"jsxFactory": ["./src/utils/jsxFactory/jsxFactory.ts"],
+		},
 	},
 	"include": ["src"],
 	"exclude": ["dist", "build", "bundle"]

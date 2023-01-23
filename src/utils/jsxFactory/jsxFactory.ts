@@ -27,6 +27,7 @@ const AttributeMapper = (val: string) =>
 const escapeHtml = (str: object[] | string) =>
 	String(str).replace(/[&<>"'\/\\]/g, (s) => `&${entityMap[s]};`)
 export const DOMcreateElement = (
+	// eslint-disable-next-line @typescript-eslint/ban-types
 	tag: Function | string,
 	props?: { [key: string]: any },
 	...children: (HTMLElement | string)[]
@@ -45,8 +46,9 @@ export const DOMcreateElement = (
 			Object.assign(element.style, val)
 		} else if (val === true) {
 			element.setAttribute(name, name)
+		} else if (name === 'href') {
+			element.setAttribute(name, val)
 		} else if (val !== false && val != null && name !== '__source') {
-			console.log([name, val])
 			element.setAttribute(name, escapeHtml(val))
 		} else if (val === false) {
 			element.removeAttribute(name)
