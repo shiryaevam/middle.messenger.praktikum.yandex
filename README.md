@@ -8,11 +8,13 @@ createDomElement, по сути jsx.
 
 
 
-![Деплой здесь](https://63ceaf600b4f24516d20b57f--polite-truffle-bf3f9b.netlify.app/)
+[Деплой здесь](https://63ceaf600b4f24516d20b57f--polite-truffle-bf3f9b.netlify.app/)
 
 ## Описание
 
 Проект создан для общения, в котором есть[будет] много фишек
+
+[Макет](https://www.figma.com/file/uQa06NI5jZxDyS2wceEzUW/Chat_external_link-(Copy)?node-id=0%3A1&t=Id4yWn3sayz0q8QB-0)
 
 ## Установка
 
