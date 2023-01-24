@@ -1,3 +1,5 @@
+import { Children } from '../../types/commonTypes'
+
 interface entityMapData {
 	[key: string]: string
 }
@@ -30,7 +32,7 @@ export const DOMcreateElement = (
 	// eslint-disable-next-line @typescript-eslint/ban-types
 	tag: Function | string,
 	props?: { [key: string]: any },
-	...children: (HTMLElement | string)[]
+	...children: Children
 ): HTMLElement => {
 	if (typeof tag === 'function') return tag(props, children)
 
