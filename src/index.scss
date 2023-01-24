@@ -1,15 +1,22 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-size: 12px;
-    box-sizing: border-box;
-    font-weight: 500;
+@import '_variables';
+* {
+	padding: 0;
+	margin: 0;
+	font-size: 12px;
+	box-sizing: border-box;
+	font-weight: 500;
 }
 
 body {
-    height: 100vh;
+	height: 100vh;
 }
 
 #root {
-    height: 100%;
+	height: 100%;
+}
+
+h2 {
+	font-size: 20px;
+	line-height: 20px;
+	color: #1e1e1e;
 }
