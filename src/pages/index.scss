@@ -9,3 +9,18 @@
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
   border-radius: 12px;
 }
+.profileAvatar {
+  background-color: var(--gray-colors2);
+  border:1px solid #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  min-width: 60px;
+  min-height: 60px;
+
+  svg {
+    height: 40px;
+    width: 40px;
+  }
+}

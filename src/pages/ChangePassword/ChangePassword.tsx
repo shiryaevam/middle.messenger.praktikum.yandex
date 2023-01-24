@@ -2,19 +2,26 @@
 /** @jsxFrag DOMcreateFragment */
 import { DOMcreateElement } from 'jsxFactory'
 import styles from './ChangePassword.module.scss'
+import Input from '../../components/Input/Input'
+import SvgField from '../../components/SvgField/SvgField'
+import DefaultAvatar from 'bundle-text:../../assets/icons/defaultAvatar.svg'
+import Button from '../../components/Button/Button'
+
 const ChangePassword = () => {
 	return (
 		<div className="wrapperPage">
 			<form className={`${styles.container} boxShadowAndBorder `} id="register">
-				<img src="" alt="Avatar" />
+				<SvgField className="profileAvatar" src={DefaultAvatar} />
 				<div>
-					<input type="text" name="oldPassword" />
-					<input type="text" name="newPassword" />
-					<input type="text" name="repeatPassword" />
+					<Input placeHolder="Старый пароль" type="text" name="oldPassword" />
+					<Input placeHolder="Новый пароль" type="text" name="newPassword" />
+					<Input
+						placeHolder="Повторите пароль"
+						type="text"
+						name="repeatPassword"
+					/>
 				</div>
-				<div>
-					<button>Сохранить</button>
-				</div>
+				<Button type="blue">Сохранить</Button>
 			</form>
 		</div>
 	)

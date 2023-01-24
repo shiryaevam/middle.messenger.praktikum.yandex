@@ -8,3 +8,22 @@
   width: 35%;
   height: 60%;
 }
+
+.basicBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &:nth-child(1){
+    height: 60%;
+  }
+  &:nth-child(2){
+    height: 40%;
+  }
+  input:nth-child(2){
+    margin-top: 20px;
+  }
+}
+.headerName{
+  margin-top: 20px;
+}

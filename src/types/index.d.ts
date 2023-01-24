@@ -10,3 +10,4 @@ declare module 'jsxFactory' {
 	const DOMcreateFragment: HTMLElement
 	const DOMcreateElement: HTMLElement
 }
+declare module 'bundle-text:*'

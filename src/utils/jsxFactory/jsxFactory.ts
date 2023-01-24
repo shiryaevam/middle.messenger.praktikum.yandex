@@ -34,7 +34,9 @@ export const DOMcreateElement = (
 	props?: { [key: string]: any },
 	...children: Children
 ): HTMLElement => {
-	if (typeof tag === 'function') return tag(props, children)
+	if (typeof tag === 'function') {
+		return tag(props, children)
+	}
 
 	const element = document.createElement(tag)
 
@@ -48,7 +50,7 @@ export const DOMcreateElement = (
 			Object.assign(element.style, val)
 		} else if (val === true) {
 			element.setAttribute(name, name)
-		} else if (name === 'href') {
+		} else if (name === 'href' || name === 'src') {
 			element.setAttribute(name, val)
 		} else if (val !== false && val != null && name !== '__source') {
 			element.setAttribute(name, escapeHtml(val))
