@@ -3,18 +3,21 @@
 import { DOMcreateElement } from 'jsxFactory'
 import styles from './Login.module.scss'
 import Routes from '../AppRoutes/Routes'
+import Button from '../../components/Button/Button'
+import Link from '../../components/Link/Link'
+import Input from '../../components/Input/Input'
 const Login = () => {
 	return (
 		<div className="wrapperPage">
 			<form className={`${styles.container} boxShadowAndBorder `} id="login">
-				<div>
-					<p>Вход</p>
-					<input type="text" name="login" />
-					<input type="text" name="password" />
+				<div className={styles.basicBlock}>
+					<h2 className={styles.namePage}>Вход</h2>
+					<Input placeHolder="Логин" type="text" name="login" />
+					<Input placeHolder="Пароль" type="password" name="password" />
 				</div>
-				<div>
-					<input type="submit">Войти</input>
-					<a href={Routes.REGISTRATION}>Нет Аккаунта?</a>
+				<div className={styles.basicBlock}>
+					<Button type="blue">Войти</Button>
+					<Link to={Routes.REGISTRATION}>Нет Аккаунта?</Link>
 				</div>
 			</form>
 		</div>

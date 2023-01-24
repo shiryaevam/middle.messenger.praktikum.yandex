@@ -1,10 +1,25 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 135px;
-  min-height: 470px;
-  width: 35%;
-  height: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	min-width: 135px;
+	min-height: 470px;
+	width: 35%;
+	height: 60%;
+}
+
+.basicBlock {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 50%;
+}
+
+.namePage {
+	margin-bottom: 40px;
+}
+.inputField {
+	margin-bottom: 16px;
 }
