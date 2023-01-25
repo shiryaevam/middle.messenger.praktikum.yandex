@@ -1,0 +1,11 @@
+.button {
+	all: unset;
+	cursor: pointer;
+}
+.blue {
+	padding: 12px 20%;
+	background-color: var(--blue-color);
+	border-radius: 8px;
+	color: var(--white-colors);
+	margin-bottom: 16px;
+}

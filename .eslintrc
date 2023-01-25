@@ -1,0 +1,132 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+			"modules": true
+		}
+	},
+	"env": {
+		"browser": true,
+		"es2020": true
+	},
+	"extends": [
+		"plugin:prettier/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"rules": {
+		"import/prefer-default-export": "off",
+		"prettier/prettier": "error",
+		"space-before-function-paren": [
+			"error",
+			{ "anonymous": "ignore", "named": "always" }
+		],
+		"func-names": ["error", "never"],
+		"react/prop-types": 0,
+		"arrow-parens": "off",
+		"linebreak-style": "off",
+		"max-len": [
+			"error",
+			{
+				"code": 120,
+				"ignoreTemplateLiterals": true,
+				"ignoreStrings": true,
+				"ignoreComments": true,
+				"ignoreTrailingComments": true
+			}
+		],
+		"no-nested-ternary": "off",
+		"prefer-promise-reject-errors": "off",
+		"spaced-comment": "off",
+		"radix": "off",
+		"no-restricted-imports": "off",
+		"react/display-name": "off",
+		"prefer-template": "error",
+		"react/jsx-max-props-per-line": [2, { "maximum": 3, "when": "multiline" }],
+		"newline-before-return": "error",
+
+		"indent": "off",
+		"implicit-arrow-linebreak": "off",
+		"object-curly-newline": "off",
+		"operator-linebreak": "off",
+		"no-confusing-arrow": "off",
+		"function-paren-newline": "off",
+		"no-tabs": "off",
+		"no-mixed-spaces-and-tabs": "off",
+		"padded-blocks": "off",
+		"no-trailing-spaces": "off",
+		"no-multiple-empty-lines": "off",
+		"no-extra-semi": "off",
+		"nonblock-statement-body-position": "off",
+		"semi-style": "off",
+		"object-curly-spacing": "off",
+
+		"semi": ["warn", "never"],
+		"quotes": [
+			"warn",
+			"single",
+			{ "avoidEscape": true, "allowTemplateLiterals": true }
+		],
+		"jsx-quotes": ["warn", "prefer-double"],
+		"comma-spacing": "off",
+		"no-param-reassign": "off",
+		"consistent-return": "off",
+		"no-shadow": "error",
+		"func-call-spacing": "off",
+		"no-spaced-func": "off"
+	},
+	"globals": {
+		"google": true,
+		"$": true,
+		"__COMPANY_ID_FOR_HEADERS": true
+	},
+	"plugins": ["@typescript-eslint", "prettier"],
+	"settings": {
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts", ".tsx"]
+		},
+		"import/extensions": [".js", ".jsx", ".ts", ".tsx", ".mjs"],
+		"propWrapperFunctions": [
+			"forbidExtraProps",
+			{ "property": "freeze", "object": "Object" },
+			{ "property": "myFavoriteWrapper" }
+		],
+		"linkComponents": ["Hyperlink", { "name": "Link", "linkAttribute": "to" }]
+	},
+	"overrides": [
+		{
+			"files": ["**/*.ts", "**/*.tsx"],
+			"env": { "browser": true, "es2020": true, "node": true },
+			"extends": [
+				"plugin:prettier/recommended",
+				"plugin:@typescript-eslint/eslint-recommended",
+				"plugin:@typescript-eslint/recommended"
+			],
+			"rules": {
+				"@typescript-eslint/no-var-requires": "off",
+				"@typescript-eslint/no-explicit-any": "off",
+				"@typescript-eslint/no-non-null-assertion": "off",
+				"react/prop-types": 0,
+				"no-return-await": "off",
+				"@typescript-eslint/explicit-module-boundary-types": "off",
+
+				"no-mixed-spaces-and-tabs": "off",
+				"@typescript-eslint/no-extra-semi": "off",
+				"no-shadow": "off",
+				"@typescript-eslint/no-shadow": "warn",
+				"no-use-before-define": "off",
+				"@typescript-eslint/no-use-before-define": ["error"]
+			},
+			"parser": "@typescript-eslint/parser",
+			"parserOptions": {
+				"ecmaFeatures": { "jsx": true },
+				"ecmaVersion": "latest",
+				"sourceType": "module"
+			},
+			"plugins": ["@typescript-eslint"]
+		}
+	]
+}
