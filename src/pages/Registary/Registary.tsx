@@ -8,7 +8,7 @@ import Button from '../../components/Button/Button'
 import Link from '../../components/Link/Link'
 const Registary = () => {
 	return (
-		<div className="wrapperPage">
+		<main className="wrapperPage">
 			<form className={`${styles.container} boxShadowAndBorder `} id="register">
 				<div className={styles.basicBlock}>
 					<h2 className={styles.headerName}>Регистрация</h2>
@@ -24,7 +24,7 @@ const Registary = () => {
 					<Link to={Routes.LOGIN}>Войти</Link>
 				</div>
 			</form>
-		</div>
+		</main>
 	)
 }
 

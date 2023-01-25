@@ -11,5 +11,6 @@
 				"parser": "html"
 			}
 		}
-	]
+	],
+	"endOfLine": "lf"
 }

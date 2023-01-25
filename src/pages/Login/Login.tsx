@@ -8,7 +8,7 @@ import Link from '../../components/Link/Link'
 import Input from '../../components/Input/Input'
 const Login = () => {
 	return (
-		<div className="wrapperPage">
+		<main className="wrapperPage">
 			<form className={`${styles.container} boxShadowAndBorder `} id="login">
 				<div className={styles.basicBlock}>
 					<h2 className={styles.namePage}>Вход</h2>
@@ -20,7 +20,7 @@ const Login = () => {
 					<Link to={Routes.REGISTRATION}>Нет Аккаунта?</Link>
 				</div>
 			</form>
-		</div>
+		</main>
 	)
 }
 

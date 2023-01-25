@@ -13,7 +13,7 @@ const Profile = () => {
 	const name = 'Иван'
 
 	return (
-		<div className="wrapperPage">
+		<main className="wrapperPage">
 			<form className={`${styles.container} boxShadowAndBorder `} id="register">
 				<div className={styles.basicBlock}>
 					<SvgField className="profileAvatar" src={DefaultAvatar} />
@@ -31,7 +31,7 @@ const Profile = () => {
 					<Link to={Routes.LOGIN}>Выйти</Link>
 				</div>
 			</form>
-		</div>
+		</main>
 	)
 }
 

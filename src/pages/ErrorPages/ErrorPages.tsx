@@ -13,7 +13,7 @@ const ErrorPages = ({
 	const RETURN_TEXT = 'Вернуться назад'
 
 	return (
-		<div className="wrapperPage">
+		<main className="wrapperPage">
 			<div className={`${styles.container} boxShadow`}>
 				<div className={styles.containerTextCode}>
 					<p>{code ? code : ''}</p>
@@ -21,7 +21,7 @@ const ErrorPages = ({
 				</div>
 				<a href="/">{RETURN_TEXT}</a>
 			</div>
-		</div>
+		</main>
 	)
 }
 export default ErrorPages

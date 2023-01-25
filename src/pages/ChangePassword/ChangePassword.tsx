@@ -9,7 +9,7 @@ import Button from '../../components/Button/Button'
 
 const ChangePassword = () => {
 	return (
-		<div className="wrapperPage">
+		<main className="wrapperPage">
 			<form className={`${styles.container} boxShadowAndBorder `} id="register">
 				<SvgField className="profileAvatar" src={DefaultAvatar} />
 				<div>
@@ -23,7 +23,7 @@ const ChangePassword = () => {
 				</div>
 				<Button type="blue">Сохранить</Button>
 			</form>
-		</div>
+		</main>
 	)
 }
 
