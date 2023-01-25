@@ -16,27 +16,27 @@ const AppRoutes = () => {
 	switch (path) {
 		case ROOT:
 			return (
-				<>
+				<nav style={{ display: 'flex', flexDirection: 'column' }}>
 					{Object.entries(Routes).map(([rout, address]) => {
 						if (rout === 'PROFILE') {
 							return Object.entries(address).map(
 								([routProfile, addressProfile]) => {
 									return (
-										<div>
+										<>
 											<a href={addressProfile}>{routProfile}</a>
-										</div>
+										</>
 									)
 								},
 							)
 						}
 
 						return (
-							<div>
+							<>
 								<a href={address}>{rout}</a>
-							</div>
+							</>
 						)
 					})}
-				</>
+				</nav>
 			)
 		case LOGIN:
 			return <Login />

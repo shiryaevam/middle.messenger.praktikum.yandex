@@ -20,10 +20,12 @@ const Profile = () => {
 					<h2 className={styles.headerName}>{name}</h2>
 					<Input placeHolder="Имя" type="text" name="first_name" />
 					<Input placeHolder="Фамилия" type="text" name="second_name" />
+					<Input placeHolder="Имя в чате" type="text" name="display_name" />
 					<Input placeHolder="Логин" type="text" name="login" />
 					<Input placeHolder="Почта" type="text" name="email" />
 					<Input placeHolder="Пароль" type="password" name="password" />
 					<Input placeHolder="Телефон" type="text" name="phone" />
+					<Input placeHolder="Изменение аватара" type="text" name="avatar" />
 				</div>
 				<div className={styles.basicBlock}>
 					<Link to="">Изменить данные</Link>
