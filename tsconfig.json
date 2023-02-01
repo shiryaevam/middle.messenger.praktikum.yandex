@@ -1,5 +1,10 @@
 {
 	"compilerOptions": {
+		"noImplicitAny": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"sourceMap": true,
+		"strictNullChecks": true,
 		"rootDir": "src",
 		"target": "ESNext",
 		"useDefineForClassFields": true,
@@ -7,12 +12,9 @@
 		"lib": ["ESNext", "dom", "dom.iterable"],
 		"moduleResolution": "Node",
 		"strict": true,
-		"sourceMap": true,
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"noEmit": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
 		"noImplicitReturns": true,
 		"declaration": true,
 		"declarationDir": "./src/types",
