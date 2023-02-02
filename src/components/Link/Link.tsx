@@ -10,7 +10,7 @@ type Link = {
 
 const Link = ({ className = '', to = '' }: Link, children: Children) => {
 	return (
-		<a href={to} className={`${className}`}>
+		<a href={to} className={className}>
 			{children}
 		</a>
 	)

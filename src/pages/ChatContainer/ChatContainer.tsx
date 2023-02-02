@@ -3,12 +3,13 @@ import { DOMcreateElement } from 'jsxFactory'
 
 import S from './ChatContainer.module.scss'
 import ChatList from './ChatList/ChatList'
+import SelectChat from './SelectChat/SelectChat'
 
 const ChatContainer = () => {
 	return (
 		<main className={S.container}>
 			<ChatList />
-			<div className={S.containerChat}>Chat</div>
+			<SelectChat />
 		</main>
 	)
 }
