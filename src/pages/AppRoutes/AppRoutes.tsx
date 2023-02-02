@@ -8,6 +8,7 @@ import '../index.scss'
 import Registary from '../Registary/Registary'
 import Profile from '../Profile/Profile'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import ChatContainer from '../ChatContainer/ChatContainer'
 
 const AppRoutes = () => {
 	const { ROOT, LOGIN, REGISTRATION, ERROR_SERVER, PROFILE, CHATS } = Routes
@@ -54,7 +55,7 @@ const AppRoutes = () => {
 			return <ChangePassword />
 
 		case CHATS:
-			return <ErrorPages text="Будет позже" />
+			return <ChatContainer />
 
 		default:
 			return <ErrorPages code="404" text="Не туда попали" />

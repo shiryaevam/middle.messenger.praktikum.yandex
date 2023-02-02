@@ -2,7 +2,7 @@
 /** @jsxFrag DOMcreateFragment */
 import { DOMcreateElement } from 'jsxFactory'
 import { Children } from '../../types/commonTypes'
-import styles from './Input.module.scss'
+import './Input.module.scss'
 
 type Input = {
 	type: string
@@ -20,7 +20,7 @@ const Input = (
 			placeholder={placeHolder}
 			name={name}
 			type={type}
-			className={`${className} ${styles.input}`}
+			className={className}
 		>
 			{children}
 		</input>

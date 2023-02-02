@@ -11,11 +11,16 @@ export const entityMap: entityMapData = {
 	"'": '#39',
 	'/': '#x2F',
 }
-const appendChild = (parent: HTMLElement, child: string | HTMLElement) => {
+const appendChild = (
+	parent: HTMLElement,
+	child: string | HTMLElement | number,
+) => {
 	if (Array.isArray(child)) {
 		child.forEach((nestedChild) => appendChild(parent, nestedChild))
 	} else if (typeof child === 'string') {
 		parent.appendChild(document.createTextNode(child))
+	} else if (typeof child === 'number') {
+		parent.appendChild(document.createTextNode(child.toString()))
 	} else {
 		parent.appendChild(child)
 	}
