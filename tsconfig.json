@@ -27,14 +27,14 @@
 		"plugins": [
 			{
 				"typesCss": "typescript-plugin-css-modules"
-			},
+			}
 		],
 		"outDir": "bundle",
-		"types": [ "node" ],
-		"typeRoots": [ "../node_modules/@types", "./src/types/index.d.ts" ],
+		"types": ["node"],
+		"typeRoots": ["../node_modules/@types", "./src/types/index.d.ts"],
 		"paths": {
-			"jsxFactory": ["./src/utils/jsxFactory/jsxFactory.ts"],
-		},
+			"jsxFactory": ["./src/utils/jsxFactory/jsxFactory.ts"]
+		}
 	},
 	"include": ["src"],
 	"exclude": ["dist", "build", "bundle"]
