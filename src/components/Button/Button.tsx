@@ -2,18 +2,28 @@
 /** @jsxFrag DOMcreateFragment */
 import { DOMcreateElement } from 'jsxFactory'
 import { Children } from '../../types/commonTypes'
-import styles from './Button.module.scss'
+import './Button.module.scss'
 
 type Button = {
 	// в type планируется более чем два варианта
-	type: 'blue' | 'default'
+	variant?: 'blue' | 'default'
+	className?: string
+	type?: string
+	onClick?: (e: Event) => void
 }
 
-const Button = ({ type = 'default' }: Button, children: Children) => {
-	const isBlue = type === 'blue'
+const Button = (
+	{ className = '', variant = 'default', type, onClick }: Button,
+	children: Children,
+) => {
+	const isBlue = variant === 'blue'
 
 	return (
-		<button className={`${styles.button} ${isBlue ? styles.blue : ''}`}>
+		<button
+			onClick={(e: Event) => (onClick ? onClick(e) : {})}
+			type={type}
+			className={`${isBlue ? 'blue' : ''} ${className}`}
+		>
 			{children}
 		</button>
 	)

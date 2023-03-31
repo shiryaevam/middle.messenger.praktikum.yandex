@@ -1,4 +1,5 @@
 import { Children } from '../../types/commonTypes'
+import Block from '../createComponent/block'
 
 interface entityMapData {
 	[key: string]: string
@@ -11,11 +12,16 @@ export const entityMap: entityMapData = {
 	"'": '#39',
 	'/': '#x2F',
 }
-const appendChild = (parent: HTMLElement, child: string | HTMLElement) => {
+const appendChild = (
+	parent: HTMLElement,
+	child: string | HTMLElement | number,
+) => {
 	if (Array.isArray(child)) {
 		child.forEach((nestedChild) => appendChild(parent, nestedChild))
 	} else if (typeof child === 'string') {
 		parent.appendChild(document.createTextNode(child))
+	} else if (typeof child === 'number') {
+		parent.appendChild(document.createTextNode(child.toString()))
 	} else {
 		parent.appendChild(child)
 	}
@@ -30,7 +36,7 @@ const escapeHtml = (str: object[] | string) =>
 	String(str).replace(/[&<>"'\/\\]/g, (s) => `&${entityMap[s]};`)
 export const DOMcreateElement = (
 	// eslint-disable-next-line @typescript-eslint/ban-types
-	tag: Function | string,
+	tag: Function | string | Block,
 	props?: { [key: string]: any },
 	...children: Children
 ): HTMLElement => {
@@ -38,7 +44,10 @@ export const DOMcreateElement = (
 		return tag(props, children)
 	}
 
-	const element = document.createElement(tag)
+	const element =
+		tag instanceof Block ? tag.getContent() : document.createElement(tag)
+
+	// console.log('element', element)
 
 	Object.entries(props || {}).forEach(([name, val]) => {
 		name = escapeHtml(AttributeMapper(name))
