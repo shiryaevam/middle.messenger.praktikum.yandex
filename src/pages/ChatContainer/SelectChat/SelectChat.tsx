@@ -5,9 +5,27 @@ import Divider from '../../../components/Divider/Divider'
 import SvgField from '../../../components/SvgField/SvgField'
 import clip from 'bundle-text:../../../assets/icons/clip.svg'
 import arrowRight from 'bundle-text:../../../assets/icons/rightArrow.svg'
-import Input from '../../../components/Input/Input'
+import { Input2 } from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
+import { useValidatorForms } from '../../../utils/hook/useValidatorForms'
 const SelectChat = () => {
+	const onSubmit = (e: Event) => {
+		e.preventDefault()
+		const forms = document.getElementById('sendChat')
+		if (!!forms) {
+			const formData = new FormData(forms as HTMLFormElement)
+			const message = formData.get('message')
+			const allForm = {
+				message,
+			}
+			console.log('allForm', allForm)
+
+			const { errors } = useValidatorForms(allForm)
+
+			console.log('errorForms', errors)
+		}
+	}
+
 	const selectChat = false
 
 	if (selectChat) {
@@ -17,6 +35,14 @@ const SelectChat = () => {
 			</div>
 		)
 	}
+
+	const Message = new Input2({
+		value: '',
+		type: 'text',
+		placeHolder: 'Сообщение',
+		name: 'message',
+		className: S.inputTextMessage,
+	})
 
 	return (
 		<div className={S.containerChat}>
@@ -34,18 +60,18 @@ const SelectChat = () => {
 			<Divider />
 			<div className={S.messages}></div>
 			<Divider />
-			<div className={S.footer}>
+			<form className={S.footer} id="sendChat">
 				<SvgField className={S.inputCLip} src={clip} />
-				<Input
-					className={S.inputTextMessage}
-					type="text"
-					placeHolder="Сообщение"
-					name="message"
-				/>
-				<Button type="blue" className={S.footerButton}>
+				<Message />
+				<Button
+					type="submit"
+					onClick={onSubmit}
+					variant="blue"
+					className={S.footerButton}
+				>
 					<SvgField src={arrowRight} />
 				</Button>
-			</div>
+			</form>
 		</div>
 	)
 }

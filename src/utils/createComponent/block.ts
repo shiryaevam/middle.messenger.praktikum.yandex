@@ -1,6 +1,7 @@
 import EventBus from './eventBus'
 
-class Block {
+// eslint-disable-next-line @typescript-eslint/ban-types
+class Block<T = {}> {
 	static EVENTS = {
 		INIT: 'init',
 		FLOW_CDM: 'flow:component-did-mount',
@@ -8,10 +9,10 @@ class Block {
 		FLOW_RENDER: 'flow:render',
 	}
 
-	protected props: Record<string, unknown>
+	protected props: T
 	private eventBus: () => EventBus
 
-	private _element: HTMLElement | null = null
+	private _element: HTMLElement = document.createElement('div')
 
 	private _meta: { tagName: string; props: any }
 
@@ -90,13 +91,17 @@ class Block {
 
 	private _render() {
 		const block = this.render()
+		if (!block) {
+			return
+		}
+		console.log('block', block)
 		// Этот небезопасный метод для упрощения логики
 		// Используйте шаблонизатор из npm или напишите свой безопасный
 		// Нужно не в строку компилировать (или делать это правильно),
 		// либо сразу в DOM-элементы возвращать из compile DOM-ноду
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		this._element.innerHTML = block
+		this._element?.appendChild(block)
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -106,7 +111,7 @@ class Block {
 		return this.element
 	}
 
-	_makePropsProxy(props: { [key: string]: any }) {
+	_makePropsProxy(props: T) {
 		// Можно и так передать this
 		// Такой способ больше не применяется с приходом ES6+
 		// eslint-disable-next-line @typescript-eslint/no-this-alias

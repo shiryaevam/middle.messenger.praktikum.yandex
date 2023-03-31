@@ -47,6 +47,8 @@
 		"parcel-reporter-clean-dist": "1.0.4",
 		"prettier": "2.8.3",
 		"sass": "1.57.1",
+		"stylelint": "^15.3.0",
+		"stylelint-config-standard-scss": "^7.0.1",
 		"typescript": "4.9.4",
 		"typescript-plugin-css-modules": "4.1.1"
 	}

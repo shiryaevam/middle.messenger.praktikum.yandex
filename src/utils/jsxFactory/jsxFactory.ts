@@ -1,4 +1,5 @@
 import { Children } from '../../types/commonTypes'
+import Block from '../createComponent/block'
 
 interface entityMapData {
 	[key: string]: string
@@ -35,7 +36,7 @@ const escapeHtml = (str: object[] | string) =>
 	String(str).replace(/[&<>"'\/\\]/g, (s) => `&${entityMap[s]};`)
 export const DOMcreateElement = (
 	// eslint-disable-next-line @typescript-eslint/ban-types
-	tag: Function | string,
+	tag: Function | string | Block,
 	props?: { [key: string]: any },
 	...children: Children
 ): HTMLElement => {
@@ -43,7 +44,10 @@ export const DOMcreateElement = (
 		return tag(props, children)
 	}
 
-	const element = document.createElement(tag)
+	const element =
+		tag instanceof Block ? tag.getContent() : document.createElement(tag)
+
+	// console.log('element', element)
 
 	Object.entries(props || {}).forEach(([name, val]) => {
 		name = escapeHtml(AttributeMapper(name))

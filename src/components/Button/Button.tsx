@@ -6,18 +6,24 @@ import './Button.module.scss'
 
 type Button = {
 	// в type планируется более чем два варианта
-	type: 'blue' | 'default'
+	variant?: 'blue' | 'default'
 	className?: string
+	type?: string
+	onClick?: (e: Event) => void
 }
 
 const Button = (
-	{ className = '', type = 'default' }: Button,
+	{ className = '', variant = 'default', type, onClick }: Button,
 	children: Children,
 ) => {
-	const isBlue = type === 'blue'
+	const isBlue = variant === 'blue'
 
 	return (
-		<button className={`${isBlue ? 'blue' : ''} ${className}`}>
+		<button
+			onClick={(e: Event) => (onClick ? onClick(e) : {})}
+			type={type}
+			className={`${isBlue ? 'blue' : ''} ${className}`}
+		>
 			{children}
 		</button>
 	)

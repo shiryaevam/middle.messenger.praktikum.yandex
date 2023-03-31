@@ -6,17 +6,23 @@ import Link from '../../../components/Link/Link'
 import Routes from '../../AppRoutes/Routes'
 import iconLink from 'bundle-text:../../../assets/icons/arrow.svg'
 import SvgField from '../../../components/SvgField/SvgField'
-import Input from '../../../components/Input/Input'
+import { Input2 } from '../../../components/Input/Input'
 import Divider from '../../../components/Divider/Divider'
 import smock from '../../../utils/smock/smock'
 import getRandomInt from '../../../utils/random/random'
 const ChatList = () => {
+	const Search = new Input2({
+		value: '',
+		placeHolder: 'Поиск',
+		type: 'text',
+	})
+
 	return (
 		<div className={S.container}>
 			<Link className={S.Link} to={Routes.PROFILE.PROFILE}>
 				Профиль <SvgField src={iconLink} />
 			</Link>
-			<Input type="text" placeHolder="Поиск" />
+			<Search />
 			<Divider />
 			{smock.CHAT_LIST.map((elChat) => {
 				const { avatar, name, lastMessage, unreadMessage } = elChat
