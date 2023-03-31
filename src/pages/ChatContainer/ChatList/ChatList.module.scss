@@ -1,12 +1,12 @@
 .container {
 	width: 30%;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-	background: var(--white-colorsGrey);
-	border: 1px solid var(--darkBlack-colors);
+	box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+	background: var(--white-colors-grey);
+	border: 1px solid var(--dark-black-colors);
 	display: flex;
 	flex-direction: column;
 	align-items: end;
-	padding: 21px 10px 0 10px;
+	padding: 21px 10px 0;
 	overflow-x: scroll;
 }
 
@@ -15,11 +15,13 @@
 	align-items: center;
 	width: 22%;
 	min-width: 60px;
+
 	div {
-      margin-left: 8px;
+		margin-left: 8px;
 		height: 100%;
 		display: inherit;
 		align-items: center;
+
 		svg {
 			fill: var(--blue-color);
 			stroke: var(--blue-color);
@@ -40,20 +42,22 @@
 	border-radius: 50%;
 	background-color: var(--gray-colors3);
 }
-.contactMainInformation{
+
+.contactMainInformation {
 	display: flex;
 	flex-direction: column;
 	align-items: start;
 	margin-left: 10px;
 }
-.contactName{
+
+.contactName {
 	color: var(--black-colors);
 	margin-bottom: 4px;
 	font-weight: 600;
 	font-size: 13px;
 }
 
-.lastMessage{
+.lastMessage {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
