@@ -12,7 +12,7 @@ export const entityMap: entityMapData = {
 	"'": '#39',
 	'/': '#x2F',
 }
-const appendChild = (
+export const appendChild = (
 	parent: HTMLElement,
 	child: string | HTMLElement | number,
 ) => {
@@ -47,27 +47,29 @@ export const DOMcreateElement = (
 	const element =
 		tag instanceof Block ? tag.getContent() : document.createElement(tag)
 
-	// console.log('element', element)
-
-	Object.entries(props || {}).forEach(([name, val]) => {
-		name = escapeHtml(AttributeMapper(name))
-		if (name.startsWith('on') && name.toLowerCase() in window) {
-			element.addEventListener(name.toLowerCase().substr(2), val)
-		} else if (name === 'ref') {
-			val(element)
-		} else if (name === 'style') {
-			Object.assign(element.style, val)
-		} else if (val === true) {
-			element.setAttribute(name, name)
-		} else if (name === 'href' || name === 'src') {
-			element.setAttribute(name, val)
-		} else if (val !== false && val != null && name !== '__source') {
-			element.setAttribute(name, escapeHtml(val))
-		} else if (val === false) {
-			element.removeAttribute(name)
-		}
-	})
-
+	if (tag instanceof Block) {
+		const { __self, __source, ...excludeprops } = props
+		tag.setProps(excludeprops)
+	} else {
+		Object.entries(props || {}).forEach(([name, val]) => {
+			name = escapeHtml(AttributeMapper(name))
+			if (name.startsWith('on') && name.toLowerCase() in window) {
+				element.addEventListener(name.toLowerCase().substr(2), val)
+			} else if (name === 'ref') {
+				val(element)
+			} else if (name === 'style') {
+				Object.assign(element.style, val)
+			} else if (val === true) {
+				element.setAttribute(name, name)
+			} else if (name === 'href' || name === 'src') {
+				element.setAttribute(name, val)
+			} else if (val !== false && val != null && name !== '__source') {
+				element.setAttribute(name, escapeHtml(val))
+			} else if (val === false) {
+				element.removeAttribute(name)
+			}
+		})
+	}
 	children.forEach((child) => {
 		appendChild(element, child)
 	})

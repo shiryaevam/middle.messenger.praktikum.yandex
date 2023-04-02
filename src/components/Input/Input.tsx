@@ -1,52 +1,79 @@
+/** @jsx DOMcreateElement */
+/** @jsxFrag DOMcreateFragment */
+import { DOMcreateElement, DOMcreateFragment } from 'jsxFactory'
 import './Input.module.scss'
 import Block from '../../utils/createComponent/block'
-import Validator, { validateRow } from '../../utils/Validator/Validator'
+import Validator from '../../utils/Validator/Validator'
 import React from 'react'
-
-type InputType = {
-	type: string
-	className?: string
-	name?: `${validateRow}`
-	placeHolder?: string
-	onChange?: (arg: Event) => void
-	value: string
-}
+import { InputType } from './InputType'
 
 export class Input2 extends Block<InputType> {
 	constructor(props: InputType) {
-		super('input', props)
-		this.element.setAttribute('value', this.props.value)
-		this.element.setAttribute('name', this.props?.name ?? '')
-		this.element.setAttribute('placeholder', this.props?.placeHolder ?? '')
-		this.element.setAttribute('type', this.props?.type)
-		this.element.setAttribute('class', this.props?.className ?? '')
-	}
-	init() {
-		super.init()
-		this.element.onfocus = (e) =>
-			Validator({
-				name: this.props.name as `${validateRow}`,
-				value: e.target?.value,
-			})
-
-		this.element.onfocus = (e) =>
-			Validator({
-				name: this.props.name as `${validateRow}`,
-				value: e.target?.value,
-			})
-		this.element.onchange = (e) => this.onChange(e)
+		super('div', props)
 	}
 
-	onChange(e: React.ChangeEvent<HTMLInputElement>) {
-		const newValue = e.target.value
-		const props = this.props
-		this.setProps({ ...props, value: newValue })
-		this.element.setAttribute('value', this.props.value)
+	protected componentDidUpdate(
+		oldProps: InputType,
+		newProps: InputType,
+	): boolean {
+		if (oldProps.value !== newProps.value) {
+			return true
+		}
+
+		return !Object.is(
+			JSON.stringify(oldProps.errors),
+			JSON.stringify(newProps.errors),
+		)
 	}
 
-	// render() {
-	//
-	//
-	// 	return null
-	// }
+	render() {
+		const { value, errors, name, className, placeHolder, type } = this.props
+		const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+			const props = this.props
+			const newValue = e.target.value
+			this.setProps({ ...props, value: newValue })
+		}
+
+		const onFOcusAndBlur = () => {
+			// eslint-disable-next-line @typescript-eslint/no-this-alias
+			const self = this
+			const { errors: validate } = Validator({ name, value })
+
+			document
+				.querySelector(`input[name=${name}]`)
+				?.removeEventListener('blur', onFOcusAndBlur)
+			document
+				.querySelector(`input[name=${name}]`)
+				?.removeEventListener('focus', onFOcusAndBlur)
+			self.setProps({ ...self.props, errors: validate })
+		}
+
+		document
+			.querySelector(`input[name=${name}]`)
+			?.addEventListener('blur', onFOcusAndBlur)
+		document
+			.querySelector(`input[name=${name}]`)
+			?.addEventListener('focus', onFOcusAndBlur)
+
+		return (
+			<>
+				<input
+					value={value}
+					name={name}
+					className={className}
+					placeholder={placeHolder}
+					type={type}
+					onChange={onChange}
+				/>
+				{Object.entries(errors ?? {}).map(([name, val]) => {
+					return (
+						<>
+							<p>{name}</p>
+							<p>{val}</p>
+						</>
+					)
+				})}
+			</>
+		)
+	}
 }
