@@ -4,7 +4,7 @@
 	"description": "---",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "parcel --port 3000 --no-cache static/index.html --dist-dir build --open",
+		"dev": "parcel --port 3000 --no-cache static/index.html --dist-dir dist --open",
 		"build": "parcel build static/index.html",
 		"start": "parcel build static/index.html && node ./server.ts"
 	},
