@@ -6,7 +6,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "parcel --port 3000 --no-cache static/index.html --dist-dir build --open",
 		"build": "parcel build static/index.html",
-		"start": "node ./server.ts"
+		"start": "parcel build static/index.html && node ./server.ts"
 	},
 	"targets": {
 		"default": {

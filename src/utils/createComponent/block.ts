@@ -1,4 +1,6 @@
+/** @jsx DOMcreateElement */
 import EventBus from './eventBus'
+import { DOMcreateElement, appendChild as CustomAppendChild } from 'jsxFactory'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 class Block<T = {}> {
@@ -94,7 +96,13 @@ class Block<T = {}> {
 		if (!block) {
 			return
 		}
-		console.log('block', block)
+		if (Array.isArray(block)) {
+			this._element.innerHTML = ''
+
+			CustomAppendChild(this.element, block)
+
+			return
+		}
 		// Этот небезопасный метод для упрощения логики
 		// Используйте шаблонизатор из npm или напишите свой безопасный
 		// Нужно не в строку компилировать (или делать это правильно),

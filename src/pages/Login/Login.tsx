@@ -36,9 +36,6 @@ class Login extends Block<{ state: { login: string; password: string } }> {
 	}
 
 	override render() {
-		console.log('render', this)
-		console.log('render2', this.props.state)
-
 		const LoginInput = new Input2({
 			value: '',
 			type: 'text',
