@@ -8,56 +8,64 @@ import '../index.scss'
 import Registary from '../Registary/Registary'
 import Profile from '../Profile/Profile'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import ChatContainer from '../ChatContainer/ChatContainer'
+import Block from '../../utils/createComponent/block'
 
-const AppRoutes = () => {
-	const { ROOT, LOGIN, REGISTRATION, ERROR_SERVER, PROFILE, CHATS } = Routes
-	const path = window.location.pathname
+class AppRoutes extends Block {
+	constructor() {
+		super()
+	}
 
-	switch (path) {
-		case ROOT:
-			return (
-				<nav style={{ display: 'flex', flexDirection: 'column' }}>
-					{Object.entries(Routes).map(([rout, address]) => {
-						if (rout === 'PROFILE') {
-							return Object.entries(address).map(
-								([routProfile, addressProfile]) => {
-									return (
-										<>
-											<a href={addressProfile}>{routProfile}</a>
-										</>
-									)
-								},
+	protected render() {
+		const { ROOT, LOGIN, REGISTRATION, ERROR_SERVER, PROFILE, CHATS } = Routes
+		const path = window.location.pathname
+
+		switch (path) {
+			case ROOT:
+				return (
+					<nav style={{ display: 'flex', flexDirection: 'column' }}>
+						{Object.entries(Routes).map(([rout, address]) => {
+							if (rout === 'PROFILE') {
+								return Object.entries(address).map(
+									([routProfile, addressProfile]) => {
+										return (
+											<>
+												<a href={addressProfile}>{routProfile}</a>
+											</>
+										)
+									},
+								)
+							}
+
+							return (
+								<>
+									<a href={address}>{rout}</a>
+								</>
 							)
-						}
+						})}
+					</nav>
+				)
+			case LOGIN:
+				return new Login().getContent()
 
-						return (
-							<>
-								<a href={address}>{rout}</a>
-							</>
-						)
-					})}
-				</nav>
-			)
-		case LOGIN:
-			return <Login />
+			case REGISTRATION:
+				return <Registary />
 
-		case REGISTRATION:
-			return <Registary />
+			case ERROR_SERVER:
+				return <ErrorPages code="500" text="Мы уже фиксим" />
 
-		case ERROR_SERVER:
-			return <ErrorPages code="500" text="Мы уже фиксим" />
+			case PROFILE.PROFILE:
+				return <Profile />
 
-		case PROFILE.PROFILE:
-			return <Profile />
+			case PROFILE.CHANGE_PASSWORD:
+				return <ChangePassword />
 
-		case PROFILE.CHANGE_PASSWORD:
-			return <ChangePassword />
+			case CHATS:
+				return <ChatContainer />
 
-		case CHATS:
-			return <ErrorPages text="Будет позже" />
-
-		default:
-			return <ErrorPages code="404" text="Не туда попали" />
+			default:
+				return <ErrorPages code="404" text="Не туда попали" />
+		}
 	}
 }
 

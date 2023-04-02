@@ -5,13 +5,15 @@
   justify-content: center;
   align-items: center;
 }
+
 .boxShadowAndBorder {
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 6px rgb(0 0 0 / 14%);
   border-radius: 12px;
 }
+
 .profileAvatar {
   background-color: var(--gray-colors2);
-  border:1px solid #000000;
+  border:1px solid #000;
   display: flex;
   align-items: center;
   justify-content: center;
