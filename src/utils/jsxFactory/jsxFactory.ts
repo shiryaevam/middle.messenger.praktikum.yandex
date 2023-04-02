@@ -48,7 +48,7 @@ export const DOMcreateElement = (
 		tag instanceof Block ? tag.getContent() : document.createElement(tag)
 
 	if (tag instanceof Block) {
-		const { __self, __source, ...excludeprops } = props
+		const { __self, __source, ...excludeprops } = props ?? {}
 		tag.setProps(excludeprops)
 	} else {
 		Object.entries(props || {}).forEach(([name, val]) => {
