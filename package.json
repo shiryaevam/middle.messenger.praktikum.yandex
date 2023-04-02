@@ -10,7 +10,7 @@
 	},
 	"targets": {
 		"default": {
-			"distDir": "./build"
+			"distDir": "./dist"
 		}
 	},
 	"alias": {
