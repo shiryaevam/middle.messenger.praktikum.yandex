@@ -11,7 +11,6 @@ import Button from '../../components/Button/Button'
 import { useValidatorForms } from '../../utils/hook/useValidatorForms'
 import { Api } from '../../Api/HTTPCLIENT'
 import Block from '../../utils/createComponent/block'
-import { InputFile } from '../../components/InputFile/InputFile'
 class Profile extends Block<{
 	state: {
 		first_name: string
@@ -43,9 +42,9 @@ class Profile extends Block<{
 	init() {
 		try {
 			;(async () =>
-				await Api.get('auth/user').then((data) =>
-					this.setProps({ state: data }),
-				))()
+				await Api.get('auth/user').then((data) => {
+					this.setProps({ state: data })
+				}))()
 		} catch {
 			console.log('error auth/user')
 		}
@@ -66,9 +65,13 @@ class Profile extends Block<{
 				const email = formData.get('email')
 				const phone = formData.get('phone')
 				const avatar = formData.get('avatar')
-				console.log('avatar', avatar)
 
-				const newAvatar = await Api.post('resources', { data: avatar })
+				const newAvatar = avatar.size
+					? await Api.post('resources', { data: avatar }).then((value) =>
+							JSON.parse(value.response),
+					  )
+					: null
+
 				console.log('newAvatar', newAvatar)
 
 				const allForm = {
@@ -78,7 +81,7 @@ class Profile extends Block<{
 					login,
 					email,
 					phone,
-					avatar: avatar ?? '',
+					avatar: newAvatar.path ?? this.props.state.avatar,
 				}
 				console.log('allForm', allForm)
 
@@ -108,7 +111,6 @@ class Profile extends Block<{
 				}
 			}
 		}
-		console.log('props', this.props)
 
 		const {
 			first_name,
@@ -162,13 +164,28 @@ class Profile extends Block<{
 			placeHolder: 'Телефон',
 		})
 
+		console.log('avatar', avatar)
+
 		return (
 			<form className={`${styles.container} boxShadowAndBorder `} id="register">
 				<div className={styles.basicBlock}>
-					<SvgField
+					<img
 						className="profileAvatar"
-						src={avatar ? avatar : DefaultAvatar}
+						src={
+							avatar
+								? `https://ya-praktikum.tech/api/v2/resources/${avatar}`
+								: DefaultAvatar
+						}
+						alt="avatar"
 					/>
+					{/*<SvgField*/}
+					{/*	className="profileAvatar"*/}
+					{/*	src={*/}
+					{/*		avatar*/}
+					{/*			? `https://ya-praktikum.tech/api/v2/resources/${avatar}`*/}
+					{/*			: DefaultAvatar*/}
+					{/*	}*/}
+					{/*/>*/}
 					<h2 className={styles.headerName}>{name}</h2>
 					<FirstName />
 					<SecondName />

@@ -173,7 +173,6 @@ const Validator = ({ name, value }: ValidateType) => {
 		default:
 			return 'некорректный name'
 	}
-	console.log('resultValidate', [result, name, value])
 
 	return result
 }
