@@ -7,6 +7,7 @@ import { Input2 } from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
 import Link from '../../components/Link/Link'
 import { useValidatorForms } from '../../utils/hook/useValidatorForms'
+import { Api } from '../../Api/HTTPCLIENT'
 const Registary = () => {
 	const FirstName = new Input2({
 		value: '',
@@ -45,7 +46,7 @@ const Registary = () => {
 		placeHolder: 'Телефон',
 	})
 
-	const onSubmit = (e: Event) => {
+	const onSubmit = async (e: Event) => {
 		e.preventDefault()
 		const forms = document.getElementById('register')
 		if (!!forms) {
@@ -68,9 +69,32 @@ const Registary = () => {
 
 			console.log('allForms', allForm)
 
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
 			const { errors } = useValidatorForms(allForm)
+			let isError = false
+			Object.entries(errors).map(([_, { errors: currentError }]) => {
+				if (Object.keys(currentError).length) {
+					isError = true
+				}
+			})
 
-			console.log('errorForms', errors)
+			if (isError) {
+				return
+			}
+			try {
+				const result = await Api.post('auth/signup', {
+					data: allForm,
+				})
+				if (result.status === 200) {
+					alert('Успешная регистрация')
+					setTimeout(() => {
+						return (window.location.href = 'login')
+					}, 1800)
+				}
+			} catch (e) {
+				console.error('catch', e)
+			}
 		}
 	}
 

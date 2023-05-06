@@ -7,8 +7,10 @@ import SvgField from '../../components/SvgField/SvgField'
 import DefaultAvatar from 'bundle-text:../../assets/icons/defaultAvatar.svg'
 import Button from '../../components/Button/Button'
 import { useValidatorForms } from '../../utils/hook/useValidatorForms'
+import { extractAccessToken } from '../../utils/cookieValidate'
 
 const ChangePassword = () => {
+	extractAccessToken()
 	const onSubmit = (e: Event) => {
 		e.preventDefault()
 		const forms = document.getElementById('changePassword')

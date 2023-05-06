@@ -8,6 +8,7 @@ import Link from '../../components/Link/Link'
 import { Input2 } from '../../components/Input/Input'
 import Block from '../../utils/createComponent/block'
 import { useValidatorForms } from '../../utils/hook/useValidatorForms'
+import { Api } from '../../Api/HTTPCLIENT'
 class Login extends Block<{ state: { login: string; password: string } }> {
 	constructor() {
 		super('main', { state: { login: '', password: '' } })
@@ -18,6 +19,26 @@ class Login extends Block<{ state: { login: string; password: string } }> {
 	onSubmit(e: Event) {
 		e.preventDefault()
 		const forms = document.getElementById('login')
+
+		const sendForms = async (data: {
+			login: FormDataEntryValue | null
+			password: FormDataEntryValue | null
+		}) => {
+			try {
+				const result = await Api.post('auth/signin', {
+					data,
+				})
+
+				if (result.status === 200) {
+					alert('Успешная вход')
+					setTimeout(() => {
+						return (window.location.href = 'chats')
+					}, 1800)
+				}
+			} catch (e) {
+				console.error('catch', e)
+			}
+		}
 		if (!!forms) {
 			const formData = new FormData(forms as HTMLFormElement)
 			const login = formData.get('login')
@@ -29,9 +50,23 @@ class Login extends Block<{ state: { login: string; password: string } }> {
 			}
 			console.log('allForm', allForm)
 
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
 			const { errors } = useValidatorForms(allForm)
 
-			console.log('errorForms', errors)
+			let isError = false
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			Object.entries(errors).map(([_, { errors: currentError }]) => {
+				if (Object.keys(currentError).length) {
+					isError = true
+				}
+			})
+
+			if (isError) {
+				return
+			}
+			sendForms(allForm)
 		}
 	}
 

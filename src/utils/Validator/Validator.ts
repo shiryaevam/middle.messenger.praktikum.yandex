@@ -115,9 +115,7 @@ const Validator = ({ name, value }: ValidateType) => {
 			  })
 			: null
 
-		!value.match(
-			/^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-		)?.length
+		!value.match(/^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/)?.length
 			? (result.errors = {
 					...result.errors,
 					oneDigitalOneUpper: `хотя бы одна заглавная буква и цифра.`,

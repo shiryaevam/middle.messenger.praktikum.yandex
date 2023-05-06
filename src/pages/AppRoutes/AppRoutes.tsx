@@ -55,7 +55,7 @@ class AppRoutes extends Block {
 				return <ErrorPages code="500" text="Мы уже фиксим" />
 
 			case PROFILE.PROFILE:
-				return <Profile />
+				return new Profile().getContent()
 
 			case PROFILE.CHANGE_PASSWORD:
 				return <ChangePassword />

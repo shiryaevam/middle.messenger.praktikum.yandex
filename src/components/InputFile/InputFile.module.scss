@@ -1,0 +1,13 @@
+input {
+	all: unset;
+	margin-bottom: 16px;
+	border-bottom: 1px solid var(--blue-color);
+	font-size: 13px;
+	line-height: 13px;
+	width: 100%;
+	color: var(--black-colors);
+
+	&::placeholder {
+		color: var(--gray-colors);
+	}
+}
